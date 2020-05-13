@@ -3,7 +3,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 
 from app import app, db
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, S3Form
 from app.models import User
 
 
@@ -72,3 +72,9 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
+
+@app.route('/s3', methods=['GET', 'POST'])
+def getS3Resource():
+    form = S3Form()
+    return render_template('s3.html', title='s3 redirect url', form=form)
