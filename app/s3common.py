@@ -22,10 +22,10 @@ def get_presigned_url(object_name):
     return presigned_url
 
 
-def upload_file(content, object_name):
-    object_key = f'{BUCKET_KEY}/{object_name}'
-    try:
-        bucket.put_object(Key=object_key, Body=content)
-    except ClientError:
-        raise StorageError
-    return object_key
+# def upload_file(content, object_name):
+#     object_key = f'{BUCKET_KEY}/{object_name}'
+#     try:
+#         bucket.put_object(Key=object_key, Body=content)
+#     except ClientError:
+#         raise StorageError
+#     return object_key
