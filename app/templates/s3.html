@@ -2,8 +2,16 @@
 
 {% block content %}
     <h1>S3 Presigned url test</h1>
-    <form action="" method="get" novalidate>
-        {{ form.hidden_tag() }}
-        <div><a href="{{ form.getUrl }}">Download S3 file</a></p></div>
+    <form action="{{presigned['url']}}" method="post" enctype="multipart/form-data">
+        {% for key, value in presigned['fields'].items() %}
+        <input type="hidden" name="{{key}}" value="{{value}}" />
+        {% endfor %}
+        <input type="file" name="file" /> <br />
+        <input type="submit" name="submit" value="Upload to Amazon S3"/>
     </form>
+    {% for key in s3ObjectList %}
+    <li>{{key.key}}</li>
+    {% endfor %}
+
+    <div><a download href="{{ url }}">Download S3 file</a></p></div>
 {% endblock %}

@@ -5,6 +5,7 @@ from werkzeug.urls import url_parse
 from app import app, db, s3common
 from app.forms import LoginForm, RegistrationForm, S3Form
 from app.models import User
+from app.s3common import generate_presigned_upload_url
 
 
 @app.route('/')
@@ -74,7 +75,8 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route('/s3', methods=['GET', 'POST'])
+@app.route('/s3', methods=['GET'])
 def s3():
-    form = S3Form()
-    return render_template('s3.html', title='s3 redirect url', form=form)
+    presigned = generate_presigned_upload_url()
+    return render_template('s3.html', title='s3 redirect url', presigned=presigned, url=s3common.get_presigned_url('logs.json'), s3ObjectList=s3common.list_s3_files())
+
