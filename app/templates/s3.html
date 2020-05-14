@@ -4,9 +4,6 @@
     <h1>S3 Presigned url test</h1>
     <form action="" method="get" novalidate>
         {{ form.hidden_tag() }}
-        <p>
-            {{ form.getS3PresignedUrl }}<br>
-        </p>
-        <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+        <div><a href="{{ form.getUrl }}">Download S3 file</a></p></div>
     </form>
 {% endblock %}

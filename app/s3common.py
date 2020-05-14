@@ -2,8 +2,8 @@ import boto3, os
 from botocore.exceptions import ClientError
 #from app.abcdef import BUCKET_NAME, BUCKET_KEY
 
-BUCKET_NAME = os.environ.get('PYTHONDEV_BUCKET_NAME') or 'tkusiak-s3-test'
-BUCKET_KEY = os.environ.get('PYTHONDEV_BUCKET_KEY', '') or ''
+BUCKET_NAME = os.environ.get('PYTHONDEV_BUCKET_NAME') or 'tkusiak-s3-test' #'tkusiak-pyt'
+BUCKET_KEY = os.environ.get('PYTHONDEV_BUCKET_KEY', '')
 
 bucket = boto3.resource('s3').Bucket(BUCKET_NAME)
 s3_client = boto3.client('s3')
@@ -14,10 +14,10 @@ class StorageError(Exception):
 
 
 def get_presigned_url(object_name):
-    object_key = f'{BUCKET_KEY}/{object_name}'
+    #object_key = f'{BUCKET_KEY}/{object_name}'
     presigned_url = s3_client.generate_presigned_url('get_object',
                                                      Params={'Bucket': BUCKET_NAME,
-                                                             'Key': object_key},
+                                                             'Key': object_name},
                                                      ExpiresIn=3600)
     return presigned_url
 

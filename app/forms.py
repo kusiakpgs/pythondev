@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
+from app import s3common
 from app.models import User
 
 
@@ -32,4 +33,4 @@ class RegistrationForm(FlaskForm):
 
 
 class S3Form(FlaskForm):
-    getS3PresignedUrl = SubmitField('Get presigned s3 url')
+    getUrl = s3common.get_presigned_url('logs.json')
