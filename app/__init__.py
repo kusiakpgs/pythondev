@@ -5,6 +5,14 @@ from flask_sqlalchemy import SQLAlchemy
 
 from config import Config
 
+
+def create_app(config_class=Config):
+    app = Flask(__name__)
+
+    from app.api import bp as api_bp
+    app.register_blueprint(api_bp, url_prefix='/api')
+
+
 app = Flask(__name__)
 # app.config['SECRET_KEY'] = 'you-will-never-guess'
 app.config.from_object(Config)
