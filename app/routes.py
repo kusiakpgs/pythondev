@@ -1,3 +1,4 @@
+import requests
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
@@ -79,4 +80,14 @@ def register():
 def s3():
     presigned = generate_presigned_upload_url()
     return render_template('s3.html', title='s3 redirect url', presigned=presigned, url=s3common.get_presigned_url('logs.json'), s3ObjectList=s3common.list_s3_files())
+
+
+@app.route('/users', methods=['GET'])
+def users():
+    return requests.get('http://tkusiak-alb-pub-1546428371.eu-west-1.elb.amazonaws.com/api/users').content
+
+
+@app.route('/test', methods=['GET'])
+def test():
+    return requests.get('https://api.github.com').url
 
