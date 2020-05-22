@@ -75,7 +75,7 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route('/s3', methods=['GET'])
+@app.route('/db/s3', methods=['GET'])
 def s3():
     presigned = generate_presigned_upload_url()
     return render_template('s3.html', title='s3 redirect url', presigned=presigned, url=s3common.get_presigned_url('logs.json'), s3ObjectList=s3common.list_s3_files())
