@@ -4,12 +4,11 @@ from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 
 from app import app, db, s3common
-from app.forms import LoginForm, RegistrationForm, S3Form
+from app.forms import LoginForm, RegistrationForm
 from app.models import User
 from app.s3common import generate_presigned_upload_url
 
 
-@app.route('/')
 @app.route('/index')
 @login_required
 def index():
@@ -25,16 +24,6 @@ def index():
         }
     ]
     return render_template('index.html', title='Home', posts=posts)
-
-
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     form = LoginForm()
-#     if form.validate_on_submit():
-#         flash('Login requested for user {}, remember_me={}'.format(
-#             form.username.data, form.remember_me.data))
-#         return redirect(url_for('index'))
-#     return render_template('login.html', title='Sign In', form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -89,5 +78,4 @@ def users():
 
 @app.route('/test', methods=['GET'])
 def test():
-    return requests.get('https://api.github.com').url
-
+    return request.get('https://api.github.com').content
