@@ -8,8 +8,8 @@ from app.models import User
 from app.s3common import generate_presigned_upload_url
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/db')
+@app.route('/db/index')
 @login_required
 def index():
     user = {'username': 'Miguel'}
@@ -36,7 +36,7 @@ def index():
 #     return render_template('login.html', title='Sign In', form=form)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/db/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -54,13 +54,13 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 
-@app.route('/logout')
+@app.route('/db/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/db/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
