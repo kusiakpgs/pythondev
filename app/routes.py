@@ -50,7 +50,7 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/test/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -65,7 +65,7 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route('/s3', methods=['GET'])
+@app.route('/redirect/s3', methods=['GET'])
 def s3():
     presigned = generate_presigned_upload_url()
     return render_template('s3.html', title='s3 redirect url', presigned=presigned, url=s3common.get_presigned_url('logs.json'), s3ObjectList=s3common.list_s3_files())
@@ -76,6 +76,6 @@ def users():
     return requests.get('http://tkusiak-alb-pub-1546428371.eu-west-1.elb.amazonaws.com/db/api/users').content
 
 
-@app.route('/test', methods=['GET'])
+@app.route('/test1', methods=['GET'])
 def test():
     return request.get('https://api.github.com').content
