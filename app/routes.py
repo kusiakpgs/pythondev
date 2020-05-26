@@ -71,11 +71,11 @@ def s3():
     return render_template('s3.html', title='s3 redirect url', presigned=presigned, url=s3common.get_presigned_url('logs.json'), s3ObjectList=s3common.list_s3_files())
 
 
-@app.route('/users', methods=['GET'])
+@app.route('/redirect/users', methods=['GET'])
 def users():
     return requests.get('http://tkusiak-alb-pub-1546428371.eu-west-1.elb.amazonaws.com/db/api/users').content
 
 
 @app.route('/test1', methods=['GET'])
 def test():
-    return request.get('https://api.github.com').content
+    return requests.get('https://api.github.com').content
