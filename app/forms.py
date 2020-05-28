@@ -2,7 +2,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, FileField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
-from app import s3common
 from app.models import User
 
 
