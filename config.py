@@ -8,6 +8,6 @@ class Config(object):
 
     # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
     #                           'sqlite:///' + os.path.join(basedir, 'app.db')
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://admin:dupadupa@tkusiak-rds-pro1.cn10audml9ef.eu-west-1.rds.amazonaws.com:3306/qadb'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://admin:adminadmin@tkusiak-rds-pro1.cn10audml9ef.eu-west-1.rds.amazonaws.com:3306/tkusiakdb'
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
