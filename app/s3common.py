@@ -1,7 +1,7 @@
 import boto3, os
 #from app.abcdef import BUCKET_NAME, BUCKET_KEY
 
-BUCKET_NAME = os.environ.get('PYTHONDEV_BUCKET_NAME') or 'tkusiak-s3-tf-pro'
+BUCKET_NAME = os.environ.get('PYTHONDEV_BUCKET_NAME') or 'tkusiak-priv-tf-pro'
 BUCKET_KEY = os.environ.get('PYTHONDEV_BUCKET_KEY', '')
 
 bucket = boto3.resource('s3').Bucket(BUCKET_NAME)
@@ -20,11 +20,13 @@ def get_presigned_url(object_name):
                                                      ExpiresIn=3600)
     return presigned_url
 
+
 def generate_presigned_upload_url():
         return s3_client.generate_presigned_post(
             BUCKET_NAME,
             '${filename}',
         )
+
 
 def list_s3_files():
     return bucket.objects.all()
