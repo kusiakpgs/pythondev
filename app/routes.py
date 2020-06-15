@@ -73,7 +73,7 @@ def s3():
 
 @app.route('/redirect/users', methods=['GET'])
 def users():
-    return requests.get('http://tkusiak-alb-tf-pro-1616764872.eu-west-1.elb.amazonaws.com/db/api/users').content
+    return requests.get('http://tkusiak-alb-tf-pro-320754023.eu-west-1.elb.amazonaws.com/db/api/users').content
 
 
 @app.route('/test1', methods=['GET'])
