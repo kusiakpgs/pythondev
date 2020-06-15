@@ -22,7 +22,7 @@ def get_presigned_url(object_name):
 
 def generate_presigned_upload_url():
         return s3_client.generate_presigned_post(
-            'tkusiak-s3-test',
+            'tkusiak-pro1',
             '${filename}',
         )
 
