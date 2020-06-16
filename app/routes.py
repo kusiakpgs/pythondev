@@ -75,10 +75,10 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route('/db/s33', methods=['GET'])
+@app.route('/db/s3', methods=['GET'])
 def s3():
     presigned = generate_presigned_upload_url()
-    return render_template('s3.html', title='s3 redirect url', presigned=presigned, url=s3common.get_presigned_url('logs.json'), s3ObjectList=s3common.list_s3_files())
+    return render_template('s3.html', title='s3 redirect url', presigned=presigned, url=s3common.get_presigned_url('logs.json'))
 
 
 @app.route('/db/test')
@@ -94,5 +94,5 @@ def test():
             'body': 'The Avengers movie was so cool!'
         }
     ]
-    return render_template('s3.html', title='Home', posts=posts)
+    return render_template('index.html', title='Home', posts=posts)
 

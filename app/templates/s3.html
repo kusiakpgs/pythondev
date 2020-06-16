@@ -9,9 +9,9 @@
         <input type="file" name="file" /> <br />
         <input type="submit" name="submit" value="Upload to Amazon S3"/>
     </form>
-    {% for key in s3ObjectList %}
+    <!--{% for key in s3ObjectList %}
     <li>{{key.key}}</li>
-    {% endfor %}
+    {% endfor %}-->
 
     <div><a download href="{{ url }}">Download S3 file</a></p></div>
 {% endblock %}

@@ -1,7 +1,7 @@
 import boto3, os
 #from app.abcdef import BUCKET_NAME, BUCKET_KEY
 
-BUCKET_NAME = os.environ.get('PYTHONDEV_BUCKET_NAME') or 'tkusiak-priv-tf-pro'
+BUCKET_NAME = 'tkusiak-priv-tf-pro'
 BUCKET_KEY = os.environ.get('PYTHONDEV_BUCKET_KEY', '')
 
 bucket = boto3.resource('s3').Bucket(BUCKET_NAME)
