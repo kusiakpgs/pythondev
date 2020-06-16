@@ -82,7 +82,7 @@ def s3():
 
 
 @app.route('/db/test')
-def index():
+def test():
     user = {'username': 'Miguel'}
     posts = [
         {
