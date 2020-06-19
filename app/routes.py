@@ -1,3 +1,5 @@
+import os
+
 import requests
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
@@ -73,7 +75,7 @@ def s3():
 
 @app.route('/redirect/users', methods=['GET'])
 def users():
-    return requests.get('http://tkusiak-alb-tf-pro-320754023.eu-west-1.elb.amazonaws.com/db/api/users').content
+    return requests.get('http://' + os.environ.get('ALB_URL') + '/db/api/users').content
 
 
 @app.route('/test1', methods=['GET'])
