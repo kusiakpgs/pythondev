@@ -75,7 +75,8 @@ def s3():
 
 @app.route('/redirect/users', methods=['GET'])
 def users():
-    return requests.get('http://' + os.environ.get('ALB_URL') + '/db/api/users').content
+    ALB_URL = os.environ.get('ALB_URL') or 'error'
+    return requests.get('http://' + ALB_URL + '/db/api/users').content
 
 
 @app.route('/test1', methods=['GET'])
